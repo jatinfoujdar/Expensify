@@ -12,6 +12,15 @@
 
 import SwiftUI
 
+
+
+class Expense{
+    var items = [ExpenseItem]()
+}
+
+
+
+
 struct ContentView: View {
 
         @State private var expenses = Expenses()
@@ -76,6 +85,10 @@ struct ContentView: View {
         }
     }
 }
+
+
+
+
 
 #Preview {
     ContentView()
