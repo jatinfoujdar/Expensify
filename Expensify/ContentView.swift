@@ -14,7 +14,7 @@ import SwiftUI
 
 struct ContentView: View {
 
-    //    @State private var expenses = Expenses()
+        @State private var expenses = Expenses()
     
     var body: some View {
         NavigationStack {
@@ -44,7 +44,15 @@ struct ContentView: View {
                             removeItems(for: "Personal" at: offsets)
                         }
                     }
-                    
+                    Section(header: "Business"){
+                        ForEach(expenses.items.filter{$0.type == "Business"}){item in
+                            expenseRow(for: item)
+                        }
+                        .onDelete{offsets in
+                            removeItem(for: "Business", at: offsets)
+                            
+                        }
+                    }
                 }
             }
         }
