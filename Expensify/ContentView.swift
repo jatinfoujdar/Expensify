@@ -58,7 +58,21 @@ struct ContentView: View {
         }
         .navigationTitle("Expensify")
         .toolbar {
-            
+            ToolbarItem(placement: .topBarLeading){
+                Button{
+                    showAddExpense = true
+                }label: {
+                    Label("Add Expense",systemImage: "plus"))
+                }
+            }
+            ToolbarItem(placement: .topTrailing){
+                navigationLink(destination: ExpenseChartView(expenseSummary: expenseSummary, totalExpense: totalBudget)){label in
+                    Label("View Chart", systemImage: "chart.pie.fill")
+                }
+            }
+        }
+        .sheet(isPresented: $showingAddExpense){
+            AddView(expenses: expenses)
         }
     }
 }
